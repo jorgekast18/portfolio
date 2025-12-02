@@ -1,0 +1,228 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About" sideBarActiveItemID="about">
+    <div class="max-w-4xl mx-auto px-4 py-12">
+
+        <!-- Header Centrado con Imagen -->
+        <div class="text-center mb-16">
+            <!-- Profile Image -->
+            <div class="mb-8">
+                <img
+                        src="/profile.webp"
+                        alt="Jorge Castaño"
+                        class="w-48 h-48 mx-auto rounded-full shadow-2xl object-cover ring-4 ring-primary/20 hover:scale-105 transition-transform duration-300"
+                />
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-5xl font-bold mb-4">
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          About Me
+        </span>
+            </h1>
+
+            <!-- Subtitle con mejor contraste -->
+            <p class="text-2xl font-semibold text-base-content/80 mb-6">
+                Passionate about creating elegant solutions to complex problems
+            </p>
+
+            <!-- Intro fuerte -->
+            <div class="max-w-2xl mx-auto">
+                <p class="text-lg text-base-content leading-relaxed">
+                    👋 I'm a <strong class="text-primary">Systems Engineer</strong> from Colombia, with over
+                    <strong class="text-primary">10 years</strong> of experience building digital products that solve real-world problems.
+                </p>
+            </div>
+        </div>
+
+        <!-- My Journey Section -->
+        <section class="mb-16">
+            <div class="bg-base-200 rounded-2xl p-8 shadow-lg">
+                <h2 class="text-3xl font-bold text-base-content mb-6 flex items-center gap-3">
+                    <span class="text-4xl">🚀</span>
+                    My Journey
+                </h2>
+
+                <div class="space-y-6 text-lg text-base-content/90 leading-relaxed">
+                    <p>
+                        I'm a <strong class="text-primary">Systems Engineer</strong> from Colombia, with over
+                        <strong class="text-primary">10 years</strong> of experience building digital products that solve
+                        real-world problems. Currently pursuing a <strong class="text-primary">Master's in Computer Engineering</strong>
+                        while working as a <strong class="text-primary">CTO and technology consultant</strong> for startups and enterprises.
+                    </p>
+
+                    <p>
+                        My journey in software development started with a simple philosophy:
+                        <em class="text-secondary font-semibold">"Create simple solutions to complex problems."</em>
+                        This approach has guided me through building everything from mobile banking applications serving
+                        thousands of users to blockchain-powered digital wallets handling tens of thousands of daily transactions.
+                    </p>
+
+                    <p>
+                        As <strong class="text-primary">Co-founder & CTO of Monetta Project</strong>, I led a team of 10 engineers
+                        to build a cross-platform digital wallet with blockchain integration on Polygon network. This experience
+                        taught me not just about technology, but about leadership, team dynamics, and the importance of balancing
+                        technical excellence with business objectives.
+                    </p>
+
+                    <p>
+                        Throughout my career, I've had the privilege of working with <strong class="text-primary">Colombia's
+                        largest financial institutions</strong>, building geolocation systems, mobile banking platforms, and
+                        payment solutions that impact hundreds of thousands of users daily.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Do - Grid -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-base-content mb-8 text-center">What I Do</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="card bg-gradient-to-br from-blue-500/10 to-blue-600/10 border-2 border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover:shadow-xl">
+                    <div class="card-body">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h3 class="card-title text-base-content">Technical Leadership</h3>
+                        <p class="text-base-content/80">
+                            Leading engineering teams, defining architecture, and establishing best practices
+                            for scalable product development.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card bg-gradient-to-br from-green-500/10 to-green-600/10 border-2 border-green-500/20 hover:border-green-500/40 transition-all duration-300 hover:shadow-xl">
+                    <div class="card-body">
+                        <div class="text-5xl mb-4">💻</div>
+                        <h3 class="card-title text-base-content">Full-Stack Development</h3>
+                        <p class="text-base-content/80">
+                            Building modern web and mobile applications with TypeScript, React, React Native,
+                            Node.js, and NestJS.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card bg-gradient-to-br from-purple-500/10 to-purple-600/10 border-2 border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-xl">
+                    <div class="card-body">
+                        <div class="text-5xl mb-4">⚙️</div>
+                        <h3 class="card-title text-base-content">System Architecture</h3>
+                        <p class="text-base-content/80">
+                            Designing microservices architectures, CI/CD pipelines, and cloud infrastructure
+                            for high-availability systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card bg-gradient-to-br from-orange-500/10 to-orange-600/10 border-2 border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 hover:shadow-xl">
+                    <div class="card-body">
+                        <div class="text-5xl mb-4">🎯</div>
+                        <h3 class="card-title text-base-content">Technology Consulting</h3>
+                        <p class="text-base-content/80">
+                            Advising startups on technology strategy, team building, and product development
+                            best practices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Approach -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-base-content mb-8 text-center">My Approach</h2>
+
+            <div class="card bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20">
+                <div class="card-body">
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <div class="text-base-content/90">
+                                <strong class="text-primary">Simplicity first:</strong> Complex systems don't require complex solutions.
+                                I believe in writing clean, maintainable code that others can understand and extend.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <div class="text-base-content/90">
+                                <strong class="text-primary">Team empowerment:</strong> Great products are built by great teams.
+                                I focus on mentoring, knowledge sharing, and creating environments where engineers thrive.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <div class="text-base-content/90">
+                                <strong class="text-primary">Continuous learning:</strong> Technology evolves rapidly, and so should we.
+                                I'm constantly exploring new tools, patterns, and methodologies to stay ahead.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <div class="text-base-content/90">
+                                <strong class="text-primary">Business alignment:</strong> Technology serves business goals.
+                                I always ensure technical decisions support the broader vision and objectives.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beyond Code -->
+        <section class="mb-16">
+            <div class="card bg-base-200">
+                <div class="card-body">
+                    <h2 class="card-title text-2xl text-base-content mb-4">Beyond Code</h2>
+                    <p class="text-lg text-base-content/90 leading-relaxed mb-4">
+                        When I'm not building software, I'm usually exploring new technologies through side projects,
+                        contributing to open-source, or learning about emerging trends in software architecture and
+                        system design. I'm particularly interested in the intersection of blockchain technology and
+                        traditional financial services.
+                    </p>
+                    <p class="text-lg text-base-content/90 leading-relaxed">
+                        I'm based in <strong class="text-primary">Granada, Spain</strong>, and I'm
+                        always open to interesting conversations about technology, startups, or potential collaborations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="text-center">
+            <div class="card bg-gradient-to-r from-primary to-secondary text-primary-content">
+                <div class="card-body items-center">
+                    <h2 class="card-title text-3xl mb-4">Let's Work Together</h2>
+                    <p class="text-xl mb-8 opacity-90 max-w-2xl">
+                        I'm always interested in hearing about new projects and opportunities.
+                    </p>
+                    <div class="card-actions flex-col sm:flex-row gap-4">
+                        <a href="mailto:jacr011893@gmail.com" class="btn btn-lg bg-white text-primary hover:bg-base-100 border-none">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Send me an email
+                        </a>
+                        <a href="/cv" class="btn btn-lg btn-outline border-white text-white hover:bg-white hover:text-primary">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            View my resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</BaseLayout>

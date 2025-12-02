@@ -4,89 +4,181 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
-  </div>
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <div class="mb-16 text-center">
+            <h1 class="text-4xl font-bold mb-4">Jorge Castaño</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">
+                Systems Engineer & Technology Leader
+            </p>
+            <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Engineering leader with 10+ years building scalable digital products.
+                Specialized in architecting high-performance systems and leading cross-functional teams
+                to deliver business-critical solutions. Currently pursuing a Master's in Computer Engineering
+                while consulting for startups and enterprises.
+            </p>
+        </div>
 
-  <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
+        <!-- Key Highlights -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center">
+                <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">10+</div>
+                <div class="text-sm font-medium text-gray-700 dark:text-gray-300">Years Experience</div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-800 dark:gray-700 rounded-lg p-6 text-center">
+                <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">10+</div>
+                <div class="text-sm font-medium text-gray-700 dark:text-gray-300">Products Delivered</div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center">
+                <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">10</div>
+                <div class="text-sm font-medium text-gray-700 dark:text-gray-300">Engineers Led</div>
+            </div>
+        </div>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
-  </div>
+        <!-- Professional Experience -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+                Professional Experience
+            </h2>
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-  </div>
+            <div class="space-y-8">
+                <TimeLineElement
+                        title="CTO & Technology Consultant"
+                        company="Startup Ecosystem & Enterprise Clients"
+                        date="2020 – Present">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>Architected and deployed 5+ production-grade digital products serving 100K+ users</li>
+                        <li>Led technical strategy and team management for early-stage startups</li>
+                        <li>Implemented CI/CD pipelines, microservices architecture, and cloud infrastructure (AWS, GCP)</li>
+                        <li>Mentored engineering teams on best practices, design patterns, and code quality standards</li>
+                    </ul>
+                </TimeLineElement>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
+                <TimeLineElement
+                        title="Co-founder & CTO"
+                        company="Monetta Project"
+                        date="2021 – 2023">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>Built a blockchain-powered digital wallet with native token on Polygon network</li>
+                        <li>Managed a team of 10 engineers across mobile (iOS/Android), backend, and web platforms</li>
+                        <li>Designed system architecture handling 50K+ daily transactions with 99.9% uptime</li>
+                        <li>Stack: TypeScript, NestJS, React, React Native, Redux, PostgreSQL, Polygon, TailwindCSS</li>
+                    </ul>
+                </TimeLineElement>
 
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-  </div>
+                <TimeLineElement
+                        title="Full-Stack Developer"
+                        company="Banking & Fintech Sector"
+                        date="2016 – 2020">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>PagaTodo App:</strong> Built mobile banking platform enabling payments, transfers, and virtual card management (React Native, Redux)</li>
+                        <li><strong>CMS Davivienda:</strong> Developed geolocation management system for 500+ bank branches and ATMs (Node.js, AngularJS, PostgreSQL)</li>
+                        <li><strong>Daviplata & Davivienda Maps:</strong> Created customer-facing geolocation tools for Colombia's largest bank</li>
+                    </ul>
+                </TimeLineElement>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
-  </div>
+                <TimeLineElement
+                        title="Project Manager & Lead Developer"
+                        company="OWO App"
+                        date="2015 – 2016">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>Led end-to-end development of commission-based payment platform (mobile + CMS)</li>
+                        <li>Defined architecture, code standards, and deployment strategies</li>
+                        <li>Delivered project 2 weeks ahead of schedule with zero critical bugs post-launch</li>
+                    </ul>
+                </TimeLineElement>
 
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-  </ul>
+                <TimeLineElement
+                        title="Mobile SDK Developer"
+                        company="Various Clients"
+                        date="2013 – 2015">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>Developed multiplatform SDK (Android, iOS, Cordova) for digital onboarding</li>
+                        <li>Integrated OCR and facial recognition services for identity verification</li>
+                        <li>SDK adopted by 3+ financial institutions across Latin America</li>
+                    </ul>
+                </TimeLineElement>
+            </div>
+        </section>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
+        <!-- Education -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+                Education
+            </h2>
 
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-  </ul>
+            <div class="space-y-6">
+                <TimeLineElement
+                        title="Master's in Computer Engineering"
+                        company="Universidad del Valle"
+                        date="Sep 2025 – Present">
+                    Currently pursuing advanced studies in distributed systems and software architecture.
+                </TimeLineElement>
+
+                <TimeLineElement
+                        title="Bachelor's in Systems Engineering"
+                        company="Universidad del Valle"
+                        date="Completed">
+                    Foundation in software development, algorithms, and system design.
+                </TimeLineElement>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section>
+            <h2 class="text-3xl font-bold mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+                Technical Expertise
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Languages & Frameworks</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
+                        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 px-3 py-1 rounded-full text-sm font-medium">NestJS</span>
+                        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm font-medium">React</span>
+                        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm font-medium">React Native</span>
+                        <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 px-3 py-1 rounded-full text-sm font-medium">Redux</span>
+                        <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 px-3 py-1 rounded-full text-sm font-medium">Spring Boot</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Infrastructure & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-100 px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
+                        <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-100 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
+                        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100 px-3 py-1 rounded-full text-sm font-medium">Docker</span>
+                        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100 px-3 py-1 rounded-full text-sm font-medium">AWS</span>
+                        <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-100 px-3 py-1 rounded-full text-sm font-medium">CI/CD</span>
+                        <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-100 px-3 py-1 rounded-full text-sm font-medium">Microservices</span>
+                        <span class="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
+                        <span class="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm font-medium">TailwindCSS</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Leadership & Architecture</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Team Leadership</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">System Design</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Code Review</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Agile/Scrum</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Domains</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Fintech</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">E-commerce</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Mobile Banking</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </BaseLayout>
