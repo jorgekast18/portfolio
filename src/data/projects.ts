@@ -7,6 +7,10 @@ export interface Project {
     demo?: string;
     image?: string;
     imageClass?: string;
+    metrics?: Array<{
+        value: string;
+        label: string;
+    }>;
 }
 
 export const projects: Project[] = [
@@ -17,6 +21,11 @@ export const projects: Project[] = [
         description: "Digital wallet with own token, blockchain integration (Polygon), cross‑platform (Android, iOS, CMS). I led a team of 10 engineers, defined architecture, applied design patterns and development best practices.",
         tech: ["TypeScript", "NestJS", "React", "React Native", "Redux", "PostgreSQL", "Polygon", "TailwindCSS"],
         image: "../public/monetta.png",
+        metrics: [
+            { value: "10", label: "Team Members" },
+            { value: "3", label: "Projects" },
+            { value: "500+", label: "Daily Txns" }
+        ],
         imageClass: 'object-contain'
     },
     {
@@ -26,6 +35,11 @@ export const projects: Project[] = [
         tech: ["JavaScript", "AngularJS", "CSS"],
         image: "../public/obtenmas.webp",
         imageClass: 'object-cover',
+        metrics: [
+            { value: "10", label: "Engineers" },
+            { value: "50K+", label: "Daily Txns" },
+            { value: "99.9%", label: "Uptime" }
+        ],
         demo: 'https://obtenmas.com'
     },
     {
@@ -35,6 +49,11 @@ export const projects: Project[] = [
         tech: ["TypeScript", "React Native", "Redux"],
         image: "../public/pagatodo.png",
         imageClass: 'object-cover',
+        metrics: [
+            { value: "100K+", label: "Users" },
+            { value: "24/7", label: "Support" },
+            { value: "4.5★", label: "Rating" }
+        ],
         demo: 'https://www.pagatodo.com'
     },
     {
@@ -43,6 +62,11 @@ export const projects: Project[] = [
         description: "Private CMS to manage geolocation points for bank offices and ATMs, relational DB backend and web frontend.",
         tech: ["JavaScript", "Node.js", "AngularJS", "PostgreSQL", "CSS"],
         image: "../public/cms_davivienda.png",
+        metrics: [
+            { value: "10+", label: "Modules" },
+            { value: "Real-time", label: "Updates" },
+            { value: "2M+", label: "Queries/mo" }
+        ],
         imageClass: 'object-contain'
     },
     {
@@ -68,6 +92,11 @@ export const projects: Project[] = [
         tech: ["JavaScript", "AngularJS", "CSS"],
         image: "../public/owo.png",
         imageClass: 'object-contain',
+        metrics: [
+            { value: "10K+", label: "Users" },
+            { value: "5", label: "Team Members" },
+            { value: "300+", label: "Daily Txns" }
+        ],
         demo: 'https://owo.com.co'
     },
     {
@@ -76,6 +105,11 @@ export const projects: Project[] = [
         description: "SDK for Android / iOS / hybrid apps, enabling digital onboarding services, face comparison & OCR integrations.",
         tech: ["Android", "iOS", "Cordova", "JavaScript"],
         image: "../public/reconoser.png",
+        metrics: [
+            { value: "30K+", label: "Users" },
+            { value: "10", label: "Team Members" },
+            { value: "4", label: "Software Solutions" }
+        ],
         imageClass: 'object-contain'
     },
     {
