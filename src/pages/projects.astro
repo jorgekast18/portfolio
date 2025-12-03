@@ -28,7 +28,7 @@ const baseUrl = import.meta.env.BASE_URL;
                         {project.image && (
                                 <figure class="relative w-full h-64 overflow-hidden bg-gradient-to-br from-base-300 to-base-200">
                                     <img
-                                            src={`${baseUrl}${project.image}`}
+                                            src={`${baseUrl}/${project.image}`}
                                             alt={project.title}
                                             class=`absolute inset-0 w-full h-full ${project.imageClass} object-center group-hover:scale-110 transition-transform duration-500`
                                     />
