@@ -10,7 +10,7 @@ export interface Props {
 	ogType?: string;
 }
 const baseUrl = import.meta.env.BASE_URL;
-const { title, description, image = `${baseUrl}/profile.webp`, ogType = 'website' } = Astro.props;
+const { title, description, image = `${baseUrl}profile.webp`, ogType = 'website' } = Astro.props;
 ---
 
 <!-- Global Metadata -->

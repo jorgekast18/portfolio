@@ -4,10 +4,10 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href={`${baseUrl}/`} class:list={{ active: sideBarActiveItemID === "home" }}>Home</a></li>
-    <li><a class="py-3 text-base" id="about" href={`${baseUrl}/about`} class:list={{ active: sideBarActiveItemID === "about" }}>About</a></li>
-    <li><a class="py-3 text-base" id="projects" href={`${baseUrl}/projects`} class:list={{ active: sideBarActiveItemID === "projects" }}>Projects</a></li>
-    <li><a class="py-3 text-base" id="cv" href={`${baseUrl}/cv`} class:list={{ active: sideBarActiveItemID === "cv" }}>CV</a></li>
+    <li><a class="py-3 text-base" id="home" href={`${baseUrl}`} class:list={{ active: sideBarActiveItemID === "home" }}>Home</a></li>
+    <li><a class="py-3 text-base" id="about" href={`${baseUrl}about`} class:list={{ active: sideBarActiveItemID === "about" }}>About</a></li>
+    <li><a class="py-3 text-base" id="projects" href={`${baseUrl}projects`} class:list={{ active: sideBarActiveItemID === "projects" }}>Projects</a></li>
+    <li><a class="py-3 text-base" id="cv" href={`${baseUrl}cv`} class:list={{ active: sideBarActiveItemID === "cv" }}>CV</a></li>
     <li>
         <a class="py-3 text-base" href="mailto:jacr011893@gmail.com" target="_blank">
             Contact
