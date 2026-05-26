@@ -10,10 +10,10 @@ const baseUrl = import.meta.env.BASE_URL;
         <!-- Featured Work Section - RESPONSIVE Y CON IMÁGENES CONTROLADAS -->
         <section class="mb-16 px-4">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-base-content mb-4">Featured Projects</h2>
-                <p class="text-lg text-base-content/70 max-w-3xl mx-auto">
-                    A selection of impactful products I've architected, led, and delivered across fintech,
-                    mobile banking, and blockchain domains.
+                <h2 class="text-4xl font-extrabold text-base-content mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Featured Projects</h2>
+                <p class="text-lg text-base-content/80 max-w-3xl mx-auto font-medium">
+                    A curated selection of high-impact digital products I've architected, led, and shipped — 
+                    from <strong class="text-primary">blockchain wallets</strong> to enterprise <strong class="text-primary">Fintech ecosystems</strong> serving thousands of users daily.
                 </p>
             </div>
 
@@ -79,10 +79,10 @@ const baseUrl = import.meta.env.BASE_URL;
                             </div>
 
                             <!-- CTA -->
-                            <div class="mt-4 flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm lg:text-base">
+                            <div class="mt-4 flex items-center gap-2 text-primary dark:text-primary font-bold text-sm lg:text-base group-hover:text-secondary transition-colors">
                                 View case study
-                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </div>
                         </div>
@@ -145,10 +145,10 @@ const baseUrl = import.meta.env.BASE_URL;
                                 <div class="badge badge-outline badge-sm lg:badge-md">PostgreSQL</div>
                             </div>
 
-                            <div class="mt-4 flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm lg:text-base">
-                                View projects
-                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            <div class="mt-4 flex items-center gap-2 text-primary dark:text-primary font-bold text-sm lg:text-base group-hover:text-secondary transition-colors">
+                                Explore the ecosystem
+                                <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </div>
                         </div>
@@ -159,8 +159,8 @@ const baseUrl = import.meta.env.BASE_URL;
 
             <!-- CTA Ver todos -->
             <div class="text-center mt-12">
-                <a href={`${baseUrl}cv`} class="btn btn-primary btn-md lg:btn-lg">
-                    View All Projects
+                <a href={`${baseUrl}cv`} class="btn btn-primary btn-md lg:btn-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                    View My Full Experience
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -169,41 +169,37 @@ const baseUrl = import.meta.env.BASE_URL;
         </section>
 
         <!-- Logo Strip - RESPONSIVE -->
-        <section class="mb-16 px-4">
+        <section class="mb-16 px-4 py-8 bg-base-200/50 rounded-2xl border border-base-300">
             <div class="text-center mb-8">
-                <p class="text-xs lg:text-sm font-semibold text-base-content/60 uppercase tracking-wider">
-                    Trusted by leading organizations
+                <p class="text-sm font-bold text-base-content/80 uppercase tracking-widest">
+                    Trusted by industry leaders
                 </p>
             </div>
-            <!-- Grid responsive de logos -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 max-w-4xl mx-auto items-center justify-items-center">
+            <!-- Responsive logo grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 max-w-5xl mx-auto items-center justify-items-center">
                 <div class="flex items-center justify-center h-12 w-full">
-                    <img
-                            src={`${baseUrl}davivienda.png`}
-                            alt="Davivienda"
-                            class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain"
-                    />
+                    <img src={`${baseUrl}davivienda.png`} alt="Davivienda" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
                 </div>
                 <div class="flex items-center justify-center h-12 w-full">
-                    <img
-                            src={`${baseUrl}daviplata.svg`}
-                            alt="Daviplata"
-                            class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain"
-                    />
+                    <img src={`${baseUrl}daviplata.svg`} alt="Daviplata" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
                 </div>
                 <div class="flex items-center justify-center h-12 w-full">
-                    <img
-                            src={`${baseUrl}monetta.png`}
-                            alt="Monetta"
-                            class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain"
-                    />
+                    <img src={`${baseUrl}cenco.png`} alt="Cencosud" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
                 </div>
                 <div class="flex items-center justify-center h-12 w-full">
-                    <img
-                            src={`${baseUrl}pagatodo.png`}
-                            alt="PagaTodo"
-                            class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain"
-                    />
+                    <img src={`${baseUrl}amaris.png`} alt="Amaris Consulting" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
+                </div>
+                <div class="flex items-center justify-center h-12 w-full">
+                    <img src={`${baseUrl}femsa.png`} alt="Femsa Salud" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
+                </div>
+                <div class="flex items-center justify-center h-12 w-full">
+                    <img src={`${baseUrl}monetta.png`} alt="Monetta" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
+                </div>
+                <div class="flex items-center justify-center h-12 w-full">
+                    <img src={`${baseUrl}pagatodo.png`} alt="PagaTodo" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
+                </div>
+                <div class="flex items-center justify-center h-12 w-full">
+                    <img src={`${baseUrl}summa.jpg`} alt="Summa - Grupo Argos" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
                 </div>
             </div>
         </section>

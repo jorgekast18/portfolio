@@ -8,49 +8,59 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         <!-- Hero Section -->
         <div class="mb-16 text-center">
             <h1 class="text-4xl font-bold mb-4">Jorge Castaño</h1>
-            <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">
-                Systems Engineer & Technology Leader
+            <p class="text-xl text-primary font-semibold mb-6">
+                Tech Lead | Software Architect | Expert Consultant
             </p>
             <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Engineering leader with 10+ years building scalable digital products.
-                Specialized in architecting high-performance systems and leading cross-functional teams
-                to deliver business-critical solutions. Currently pursuing a Master's in Computer Engineering
-                while consulting for startups and enterprises.
+                I turn business vision into scalable, high-impact digital products. 
+                With 10+ years of experience, I lead cross-functional engineering teams and design mission-critical architectures across Fintech, Blockchain, and Enterprise domains. If you need a technical leader who guarantees quality, performance, and on-time delivery — you're in the right place.
             </p>
         </div>
 
         <!-- Key Highlights -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center">
-                <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">10+</div>
-                <div class="text-sm font-medium text-gray-700 dark:text-gray-300">Years Experience</div>
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center shadow-sm">
+                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-2">10+</div>
+                <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Years of Experience</div>
             </div>
-            <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-800 dark:gray-700 rounded-lg p-6 text-center">
-                <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">10+</div>
-                <div class="text-sm font-medium text-gray-700 dark:text-gray-300">Products Delivered</div>
+            <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center shadow-sm">
+                <div class="text-4xl font-extrabold text-green-600 dark:text-green-400 mb-2">10+</div>
+                <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Products Shipped</div>
             </div>
-            <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center">
-                <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">10</div>
-                <div class="text-sm font-medium text-gray-700 dark:text-gray-300">Engineers Led</div>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center shadow-sm">
+                <div class="text-4xl font-extrabold text-purple-600 dark:text-purple-400 mb-2">20+</div>
+                <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Teams Impacted</div>
             </div>
         </div>
 
         <!-- Professional Experience -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+            <h2 class="text-3xl font-bold mb-8 border-b-2 border-primary/20 pb-2">
                 Professional Experience
             </h2>
 
             <div class="space-y-8">
                 <TimeLineElement
+                        title="Expert Consultant & Tech Lead"
+                        company="Amaris Consulting"
+                        date="Sept 2024 – Present">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Summa (Grupo Argos):</strong> Led the full revitalization of the Becarios de Fundación Argos platform, delivering innovative features that accelerated critical selection processes.</li>
+                        <li><strong>Femsa Salud:</strong> Successfully deployed React Native applications for Yza and Cruz Verde pharmacies, boosting performance by 30% and shipping 5+ core business features.</li>
+                        <li><strong>Cencosud:</strong> Administered SonarQube at enterprise scale, analyzing 3,400+ projects, advising 20+ teams, and elevating code quality across 10+ core products.</li>
+                        <li>Championed DevSecOps best practices, dramatically raising code quality standards across the organization.</li>
+                    </ul>
+                </TimeLineElement>
+
+                <TimeLineElement
                         title="CTO & Technology Consultant"
                         company="Startup Ecosystem & Enterprise Clients"
                         date="2020 – Present">
                     <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Architected and deployed 5+ production-grade digital products serving 100K+ users</li>
-                        <li>Led technical strategy and team management for early-stage startups</li>
-                        <li>Implemented CI/CD pipelines, microservices architecture, and cloud infrastructure (AWS, GCP)</li>
-                        <li>Mentored engineering teams on best practices, design patterns, and code quality standards</li>
+                        <li>Architected and deployed 5+ production-grade digital products serving 100K+ users.</li>
+                        <li>Led technical strategy and team management for early-stage startups.</li>
+                        <li>Implemented CI/CD pipelines, microservices architecture, and cloud infrastructure (AWS, GCP).</li>
+                        <li>Mentored engineering teams on best practices, design patterns, and code quality standards.</li>
                     </ul>
                 </TimeLineElement>
 
@@ -59,21 +69,21 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
                         company="Monetta Project"
                         date="2021 – 2023">
                     <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Built a blockchain-powered digital wallet with native token on Polygon network</li>
-                        <li>Managed a team of 10 engineers across mobile (iOS/Android), backend, and web platforms</li>
-                        <li>Designed system architecture handling 50K+ daily transactions with 99.9% uptime</li>
-                        <li>Stack: TypeScript, NestJS, React, React Native, Redux, PostgreSQL, Polygon, TailwindCSS</li>
+                        <li>Built a blockchain-powered digital wallet with a native token on the Polygon network.</li>
+                        <li>Managed a team of 10 engineers across mobile (iOS/Android), backend, and web platforms.</li>
+                        <li>Designed a system architecture handling 50K+ daily transactions with 99.9% uptime.</li>
+                        <li>Stack: TypeScript, NestJS, React, React Native, Redux, PostgreSQL, Polygon, TailwindCSS.</li>
                     </ul>
                 </TimeLineElement>
 
                 <TimeLineElement
-                        title="Full-Stack Developer"
+                        title="Full-Stack Developer & Tech Lead"
                         company="Banking & Fintech Sector"
                         date="2016 – 2020">
                     <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><strong>PagaTodo App:</strong> Built mobile banking platform enabling payments, transfers, and virtual card management (React Native, Redux)</li>
-                        <li><strong>CMS Davivienda:</strong> Developed geolocation management system for 500+ bank branches and ATMs (Node.js, AngularJS, PostgreSQL)</li>
-                        <li><strong>Daviplata & Davivienda Maps:</strong> Created customer-facing geolocation tools for Colombia's largest bank</li>
+                        <li><strong>PagaTodo App:</strong> Built the flagship mobile banking platform enabling payments, transfers, and virtual card management (React Native, Redux).</li>
+                        <li><strong>CMS Davivienda:</strong> Developed a geolocation management system for 500+ bank branches and 2,000+ ATMs (Node.js, AngularJS, PostgreSQL).</li>
+                        <li><strong>Daviplata & Davivienda Maps:</strong> Created customer-facing geolocation tools mapping 15,000+ service points for Colombia's largest bank.</li>
                     </ul>
                 </TimeLineElement>
 
@@ -82,20 +92,20 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
                         company="OWO App"
                         date="2015 – 2016">
                     <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Led end-to-end development of commission-based payment platform (mobile + CMS)</li>
-                        <li>Defined architecture, code standards, and deployment strategies</li>
-                        <li>Delivered project 2 weeks ahead of schedule with zero critical bugs post-launch</li>
+                        <li>Led end-to-end development of a commission-based payment platform (mobile + CMS).</li>
+                        <li>Defined architecture, code standards, and deployment strategies.</li>
+                        <li>Delivered the project 2 weeks ahead of schedule with zero critical bugs post-launch.</li>
                     </ul>
                 </TimeLineElement>
 
                 <TimeLineElement
                         title="Mobile SDK Developer"
-                        company="Various Clients"
+                        company="Multiple Clients"
                         date="2013 – 2015">
                     <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Developed multiplatform SDK (Android, iOS, Cordova) for digital onboarding</li>
-                        <li>Integrated OCR and facial recognition services for identity verification</li>
-                        <li>SDK adopted by 3+ financial institutions across Latin America</li>
+                        <li>Developed a multiplatform SDK (Android, iOS, Cordova) for digital onboarding.</li>
+                        <li>Integrated OCR and facial recognition services for identity verification.</li>
+                        <li>SDK adopted by 3+ financial institutions across Latin America.</li>
                     </ul>
                 </TimeLineElement>
             </div>
@@ -103,7 +113,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
         <!-- Education -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+            <h2 class="text-3xl font-bold mb-8 border-b-2 border-primary/20 pb-2">
                 Education
             </h2>
 
@@ -119,14 +129,14 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
                         title="Bachelor's in Systems Engineering"
                         company="Universidad del Valle"
                         date="Completed">
-                    Foundation in software development, algorithms, and system design.
+                    Solid foundation in software development, algorithms, and system design.
                 </TimeLineElement>
             </div>
         </section>
 
         <!-- Technical Skills -->
-        <section>
-            <h2 class="text-3xl font-bold mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-2">
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 border-b-2 border-primary/20 pb-2">
                 Technical Expertise
             </h2>
 
@@ -155,7 +165,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
                         <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-100 px-3 py-1 rounded-full text-sm font-medium">CI/CD</span>
                         <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-100 px-3 py-1 rounded-full text-sm font-medium">Microservices</span>
                         <span class="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
-                        <span class="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm font-medium">TailwindCSS</span>
+                        <span class="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm font-medium">SonarQube</span>
                     </div>
                 </div>
 
@@ -176,8 +186,21 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
                         <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">E-commerce</span>
                         <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Mobile Banking</span>
                         <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Healthcare</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Retail</span>
                     </div>
                 </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-12 p-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl border border-primary/20 shadow-md hover:shadow-lg transition-all duration-300">
+                <h3 class="text-2xl font-bold mb-4 text-base-content">Ready to take your product to the next level?</h3>
+                <p class="mb-6 text-base-content/80 max-w-2xl mx-auto text-lg">
+                    My approach isn't just writing code — it's building robust solutions that solve real business problems, scale over time, and exceed your users' expectations.
+                </p>
+                <a href="mailto:jorgecastano.dev@gmail.com" class="btn btn-primary btn-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                    Let's Talk About Your Project
+                </a>
             </div>
         </section>
     </div>
