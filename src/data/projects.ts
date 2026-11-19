@@ -35,7 +35,7 @@ export const projects: Project[] = [
         description: "AI agent platform that runs appointments, schedules and sales for small businesses: medical and dental clinics, beauty salons, nail spas and sports-court bookings. I designed the multi-agent orchestration — the agent harness, tool calling against calendars and booking flows, AI usage policies, guardrails and customer segmentation.",
         tech: ["Python", "LLMs", "AI Agents", "Tool Calling", "NestJS", "Next.js", "n8n", "PostgreSQL"],
         metrics: [
-            { value: "Multi-agent", label: "Orchestration" },
+            { value: "Agents", label: "Multi-agent orchestration" },
             { value: "5", label: "Business verticals" },
             { value: "2026", label: "Launching" }
         ]
