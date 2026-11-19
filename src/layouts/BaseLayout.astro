@@ -3,30 +3,48 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
-
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
+import { t, alternatePath, type Lang } from "../i18n";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  ogType?: string;
+  sideBarActiveItemID?: string;
+  lang?: Lang;
+}
+
 const {
   image,
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   sideBarActiveItemID,
   ogType,
+  lang = "en",
 } = Astro.props;
 const fullTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Jorge Castaño`;
+const other: Lang = lang === "es" ? "en" : "es";
+const otherPath = alternatePath(lang, Astro.url.pathname);
+const enPath = lang === "en" ? Astro.url.pathname : otherPath;
+const esPath = lang === "es" ? Astro.url.pathname : otherPath;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="jorge">
+<html lang={lang} data-theme="jorge">
   <head>
-    <BaseHead title={fullTitle} description={description} image={image} ogType={ogType} />
+    <BaseHead title={fullTitle} description={description} image={image} ogType={ogType} lang={lang} />
+    <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL(esPath, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(enPath, Astro.site)} />
     {TRANSITION_API && <ViewTransitions />}
   </head>
   <body class="bg-base-100 text-base-content min-h-screen flex flex-col">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 btn btn-primary btn-sm">Skip to content</a>
-    <Header active={sideBarActiveItemID} />
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 btn btn-primary btn-sm">{t(lang).common.skip}</a>
+    <Header active={sideBarActiveItemID} lang={lang} otherLang={other} otherPath={otherPath} />
     <main id="main" class="flex-1 w-full">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

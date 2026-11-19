@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+import { jobs, education, skills, pick } from "../data/experience";
+import { LINKEDIN_URL } from "../config";
+import { t, type Lang } from "../i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const baseUrl = import.meta.env.BASE_URL;
+const pdf = `${baseUrl}${lang === "es" ? "jorge-castano-cv-es.pdf" : "jorge-castano-cv.pdf"}`;
+---
+
+<BaseLayout title={s.cv.pageTitle} description={s.cv.description} sideBarActiveItemID="cv" lang={lang}>
+    <div class="mx-auto max-w-4xl px-5 py-16">
+        <header>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{s.cv.kicker}</p>
+            <h1 class="mt-2 text-4xl font-bold md:text-5xl">{s.cv.title}</h1>
+            <p class="mt-4 text-lg text-base-content/80">{s.cv.intro}</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a href={pdf} download class="btn btn-primary btn-sm">{s.common.downloadCv}</a>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">{s.common.linkedin}</a>
+            </div>
+        </header>
+
+        <section class="mt-14" aria-labelledby="exp-title">
+            <h2 id="exp-title" class="mb-8 border-b border-base-300 pb-3 text-2xl font-bold">{s.cv.experience}</h2>
+            {jobs.map((j) => (
+                <TimeLineElement title={pick(j.title, lang)} company={pick(j.company, lang)} date={pick(j.date, lang)} tags={j.tags}>
+                    {j.bullets.length > 1 ? (
+                        <ul class="list-disc space-y-1 pl-5">
+                            {j.bullets.map((b) => <li>{pick(b, lang)}</li>)}
+                        </ul>
+                    ) : (
+                        <p>{pick(j.bullets[0], lang)}</p>
+                    )}
+                </TimeLineElement>
+            ))}
+        </section>
+
+        <section class="mt-16" aria-labelledby="edu-title">
+            <h2 id="edu-title" class="mb-8 border-b border-base-300 pb-3 text-2xl font-bold">{s.cv.education}</h2>
+            {education.map((e) => (
+                <TimeLineElement title={pick(e.title, lang)} company={pick(e.company, lang)} date={pick(e.date, lang)}>
+                    {pick(e.text, lang) && <p>{pick(e.text, lang)}</p>}
+                </TimeLineElement>
+            ))}
+        </section>
+
+        <section class="mt-16" aria-labelledby="skills-title">
+            <h2 id="skills-title" class="mb-8 border-b border-base-300 pb-3 text-2xl font-bold">{s.cv.skills}</h2>
+            <div class="grid gap-8 md:grid-cols-2">
+                {skills.map((g) => (
+                    <div>
+                        <h3 class="mb-3 text-base font-semibold">{pick(g.group, lang)}</h3>
+                        <ul class="flex flex-wrap gap-2">
+                            {g.items.map((i) => (
+                                <li class="rounded-full border border-base-300 px-3 py-1 text-sm text-base-content/85">{i}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+            <p class="mt-8 text-sm text-base-content/70">{s.cv.languages}</p>
+        </section>
+    </div>
+</BaseLayout>

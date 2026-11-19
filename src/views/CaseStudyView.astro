@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Project } from "../data/projects";
+import { CONTACT_EMAIL } from "../config";
+import { t, localePath, type Lang } from "../i18n";
+
+interface Props { lang: Lang; project: Project }
+const { lang, project } = Astro.props;
+const s = t(lang);
+const cs = project.caseStudy!;
+const baseUrl = import.meta.env.BASE_URL;
+const image = project.image ? `${baseUrl}${project.image}` : undefined;
+---
+
+<BaseLayout title={project.title} description={project.description} sideBarActiveItemID="projects" lang={lang} image={image} ogType="article">
+    <article class="mx-auto max-w-4xl px-5 py-16">
+        <a href={localePath(lang, "projects")} class="text-sm text-base-content/70 hover:text-primary">{s.case.back}</a>
+
+        <header class="mt-8">
+            {project.period && <p class="text-xs font-medium uppercase tracking-wider text-base-content/60">{project.period}</p>}
+            <h1 class="mt-2 text-4xl font-bold md:text-5xl">{project.title}</h1>
+            {project.role && <p class="mt-3 text-lg font-medium text-primary">{project.role}</p>}
+            <p class="mt-6 text-lg leading-relaxed text-base-content/85">{project.description}</p>
+            {(project.demo || project.github) && (
+                <div class="mt-6 flex flex-wrap gap-3">
+                    {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">{s.common.liveDemo}</a>}
+                    {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">{s.common.source}</a>}
+                </div>
+            )}
+        </header>
+
+        {project.image && (
+            <figure class="mt-10 flex h-56 items-center justify-center overflow-hidden rounded-2xl bg-white/95 p-8">
+                <img src={`${baseUrl}${project.image}`} alt={`${project.title} logo`} class="max-h-full w-auto object-contain" />
+            </figure>
+        )}
+
+        {project.metrics && (
+            <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {project.metrics.map((m) => (
+                    <li class="rounded-2xl border border-base-300 bg-base-200 p-5">
+                        <p class="font-display text-3xl font-semibold text-primary">{m.value}</p>
+                        <p class="mt-1 text-sm text-base-content/70">{m.label}</p>
+                    </li>
+                ))}
+            </ul>
+        )}
+
+        <section class="mt-14" aria-labelledby="ctx">
+            <h2 id="ctx" class="text-2xl font-bold">{s.case.context}</h2>
+            <p class="mt-4 leading-relaxed text-base-content/85">{cs.context}</p>
+        </section>
+
+        <section class="mt-12" aria-labelledby="did">
+            <h2 id="did" class="text-2xl font-bold">{s.case.contribution}</h2>
+            <ul class="mt-4 space-y-3">
+                {cs.contribution.map((c) => (
+                    <li class="flex gap-3 leading-relaxed text-base-content/85">
+                        <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden="true"></span>
+                        <span>{c}</span>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
+        <section class="mt-12" aria-labelledby="res">
+            <h2 id="res" class="text-2xl font-bold">{s.case.results}</h2>
+            <ul class="mt-4 space-y-3">
+                {cs.results.map((r) => (
+                    <li class="rounded-xl border-l-2 border-primary bg-base-200 px-4 py-3 text-base-content/90">{r}</li>
+                ))}
+            </ul>
+        </section>
+
+        <section class="mt-12" aria-labelledby="stack">
+            <h2 id="stack" class="text-2xl font-bold">{s.case.stack}</h2>
+            <ul class="mt-4 flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                    <li class="rounded-full border border-base-300 px-3 py-1 text-sm text-base-content/85">{tech}</li>
+                ))}
+            </ul>
+        </section>
+
+        <div class="mt-16 rounded-3xl border border-primary/40 bg-base-200 p-8 text-center">
+            <p class="text-base-content/85">{s.common.openTo}</p>
+            <div class="mt-6 flex flex-wrap justify-center gap-3">
+                <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary">{s.common.getInTouch}</a>
+                <a href={localePath(lang, "projects")} class="btn btn-outline">{s.case.back.replace("← ", "")}</a>
+            </div>
+        </div>
+    </article>
+</BaseLayout>

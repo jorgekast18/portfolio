@@ -1,10 +1,14 @@
 ---
 import type { Project } from "../data/projects";
+import { t, localePath, type Lang } from "../i18n";
 interface Props {
     project: Project;
+    lang?: Lang;
 }
-const { project } = Astro.props;
+const { project, lang = "en" } = Astro.props;
+const s = t(lang).common;
 const baseUrl = import.meta.env.BASE_URL;
+const caseUrl = project.caseStudy ? localePath(lang, `projects/${project.id}/`) : undefined;
 ---
 
 <article id={project.id} class="group flex h-full scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-base-300 bg-base-200 transition-colors hover:border-primary/50">
@@ -23,7 +27,9 @@ const baseUrl = import.meta.env.BASE_URL;
         {project.period && (
             <p class="mb-2 text-xs font-medium uppercase tracking-wider text-base-content/60">{project.period}</p>
         )}
-        <h3 class="text-xl font-semibold text-base-content">{project.title}</h3>
+        <h3 class="text-xl font-semibold text-base-content">
+            {caseUrl ? <a href={caseUrl} class="hover:text-primary">{project.title}</a> : project.title}
+        </h3>
         {project.role && <p class="mt-1 text-sm font-medium text-primary">{project.role}</p>}
 
         <p class="mt-4 text-sm leading-relaxed text-base-content/80">{project.description}</p>
@@ -40,23 +46,20 @@ const baseUrl = import.meta.env.BASE_URL;
             </dl>
         )}
 
-        <ul class="mt-5 flex flex-wrap gap-2" aria-label="Tech stack">
-            {project.tech.map((t) => (
-                <li class="rounded-full border border-base-300 px-2.5 py-0.5 text-xs text-base-content/80">{t}</li>
+        <ul class="mt-5 flex flex-wrap gap-2" aria-label={s.techStack}>
+            {project.tech.map((tech) => (
+                <li class="rounded-full border border-base-300 px-2.5 py-0.5 text-xs text-base-content/80">{tech}</li>
             ))}
         </ul>
 
-        {(project.demo || project.github) && (
-            <div class="mt-auto flex gap-5 pt-5 text-sm font-medium">
+        {(caseUrl || project.demo || project.github) && (
+            <div class="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-5 text-sm font-medium">
+                {caseUrl && <a href={caseUrl} class="text-primary hover:underline">{s.caseStudy}</a>}
                 {project.demo && (
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                        Live demo ↗
-                    </a>
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" class="text-base-content/80 hover:text-base-content hover:underline">{s.liveDemo}</a>
                 )}
                 {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-base-content/80 hover:text-base-content hover:underline">
-                        Source code ↗
-                    </a>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-base-content/80 hover:text-base-content hover:underline">{s.source}</a>
                 )}
             </div>
         )}

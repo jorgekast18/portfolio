@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getProjects } from "../data/projects";
+import { CONTACT_EMAIL, LINKEDIN_URL, SITE_DESCRIPTION } from "../config";
+import { t, localePath, type Lang } from "../i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const baseUrl = import.meta.env.BASE_URL;
+const projects = getProjects(lang);
+
+const aiProjects = projects.filter((p) => p.category === "ai");
+const highlights = ["monetta", "daviplata", "reconoser", "femsa"]
+    .map((id) => projects.find((p) => p.id === id))
+    .filter((p) => p !== undefined);
+
+const statValues = ["10+", "1M+", "85%", "10"];
+const pipeline = ["User", "Agent", "Tools", "RAG", "Answer"];
+
+const logos = [
+    { src: "davivienda.png", alt: "Davivienda" },
+    { src: "daviplata.svg", alt: "Daviplata" },
+    { src: "femsa.png", alt: "Femsa Salud" },
+    { src: "cenco.png", alt: "Cencosud" },
+    { src: "amaris.png", alt: "Amaris Consulting" },
+    { src: "pagatodo.png", alt: "Banco PagaTodo" },
+    { src: "summa.jpg", alt: "Summa – Grupo Argos" },
+    { src: "monetta.png", alt: "Monetta" },
+];
+const description = lang === "es"
+    ? "Jorge Castaño — Senior Software Engineer y AI Engineer con más de 10 años construyendo productos de fintech, banca móvil y software empresarial que usan más de 1 millón de personas. Agentes con LLMs, RAG y arquitectura en producción."
+    : SITE_DESCRIPTION;
+---
+
+<BaseLayout sideBarActiveItemID="home" lang={lang} description={description}>
+    <!-- Hero -->
+    <section class="mx-auto max-w-6xl px-5 pb-16 pt-16 md:pt-24">
+        <div class="grid items-center gap-12 md:grid-cols-[1fr_auto]">
+            <div>
+                <ul class="mb-8 flex flex-wrap items-center gap-2 text-xs font-medium" aria-label="Agent pipeline">
+                    {pipeline.map((step, i) => (
+                        <li class="flex items-center gap-2">
+                            <span class:list={[
+                                "rounded-full border px-3 py-1",
+                                step === "Agent" ? "border-primary bg-primary text-primary-content" : "border-base-300 text-base-content/70",
+                            ]}>{step}</span>
+                            {i < pipeline.length - 1 && <span class="text-base-content/40" aria-hidden="true">→</span>}
+                        </li>
+                    ))}
+                </ul>
+
+                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">Jorge Castaño</p>
+                <h1 class="text-4xl font-bold leading-[1.08] md:text-6xl">
+                    {s.home.title}<br />{s.home.title2}
+                </h1>
+                <p class="mt-6 max-w-2xl text-lg leading-relaxed text-base-content/80">{s.home.intro}</p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href={localePath(lang, "projects")} class="btn btn-primary">{s.home.seeWork}</a>
+                    <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-outline">{s.common.getInTouch}</a>
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">{s.common.linkedin}</a>
+                </div>
+                <p class="mt-6 text-sm text-base-content/60">{s.common.location}</p>
+            </div>
+
+            <img
+                src={`${baseUrl}profile.webp`}
+                alt={s.home.portraitAlt}
+                width="288"
+                height="288"
+                class="mx-auto h-56 w-56 rounded-full object-cover ring-2 ring-primary/60 ring-offset-8 ring-offset-base-100 md:h-72 md:w-72"
+            />
+        </div>
+
+        <ul class="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {statValues.map((v, i) => (
+                <li class="rounded-2xl border border-base-300 bg-base-200 p-5">
+                    <p class="font-display text-3xl font-semibold text-primary">{v}</p>
+                    <p class="mt-1 text-sm text-base-content/70">{s.home.stats[i]}</p>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <!-- AI Engineering -->
+    <section class="mx-auto max-w-6xl px-5 py-16" aria-labelledby="ai-title">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{s.home.nowKicker}</p>
+        <h2 id="ai-title" class="mt-2 text-3xl font-bold md:text-4xl">{s.home.aiTitle}</h2>
+        <p class="mt-4 max-w-3xl text-base-content/80">{s.home.aiIntro}</p>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+            {aiProjects.map((p) => <ProjectCard project={p} lang={lang} />)}
+        </div>
+    </section>
+
+    <!-- Track record -->
+    <section class="mx-auto max-w-6xl px-5 py-16" aria-labelledby="track-title">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{s.home.trackKicker}</p>
+        <h2 id="track-title" class="mt-2 text-3xl font-bold md:text-4xl">{s.home.trackTitle}</h2>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+            {highlights.map((p) => <ProjectCard project={p} lang={lang} />)}
+        </div>
+        <div class="mt-10 flex flex-wrap gap-3">
+            <a href={localePath(lang, "projects")} class="btn btn-primary">{s.home.allProjects}</a>
+            <a href={localePath(lang, "cv")} class="btn btn-outline">{s.home.fullExperience}</a>
+        </div>
+    </section>
+
+    <!-- Logos -->
+    <section class="mx-auto max-w-6xl px-5 py-12" aria-labelledby="logos-title">
+        <h2 id="logos-title" class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">{s.home.logos}</h2>
+        <ul class="mt-8 grid grid-cols-2 items-center gap-4 sm:grid-cols-4">
+            {logos.map((l) => (
+                <li class="flex h-20 items-center justify-center rounded-xl bg-white/95 p-4">
+                    <img src={`${baseUrl}${l.src}`} alt={l.alt} loading="lazy" class="max-h-10 w-auto object-contain" />
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <!-- CTA -->
+    <section class="mx-auto max-w-6xl px-5 py-16">
+        <div class="rounded-3xl border border-primary/40 bg-base-200 p-8 text-center md:p-14">
+            <h2 class="text-3xl font-bold md:text-4xl">{s.home.ctaTitle}</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-base-content/80">{s.common.openTo}</p>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary">{s.common.emailMe}</a>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline">{s.common.connectLinkedin}</a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

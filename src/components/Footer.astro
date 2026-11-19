@@ -1,21 +1,24 @@
 ---
 import { CONTACT_EMAIL, LINKEDIN_URL, GITHUB_URL } from "../config";
+import { t, localePath, type Lang } from "../i18n";
+interface Props { lang?: Lang }
+const { lang = "en" } = Astro.props;
+const s = t(lang);
 const today = new Date();
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <footer class="mt-24 border-t border-base-300 bg-base-200">
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 md:flex-row md:items-center md:justify-between">
         <div>
             <p class="font-display text-lg font-semibold">Jorge Castaño<span class="text-primary">.</span></p>
-            <p class="mt-1 text-sm text-base-content/70">Senior Software Engineer &amp; AI Engineer · Cali, Colombia · Open to remote and relocation</p>
+            <p class="mt-1 text-sm text-base-content/70">{s.footer.tagline}</p>
         </div>
 
         <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Footer">
-            <a href={`${baseUrl}projects`} class="link link-hover">Projects</a>
-            <a href={`${baseUrl}cv`} class="link link-hover">Experience</a>
-            <a href={`${baseUrl}about`} class="link link-hover">About</a>
-            <a href={`mailto:${CONTACT_EMAIL}`} class="link link-hover">Contact</a>
+            <a href={localePath(lang, "projects")} class="link link-hover">{s.nav.projects}</a>
+            <a href={localePath(lang, "cv")} class="link link-hover">{s.nav.cv}</a>
+            <a href={localePath(lang, "about")} class="link link-hover">{s.nav.about}</a>
+            <a href={`mailto:${CONTACT_EMAIL}`} class="link link-hover">{s.nav.contact}</a>
         </nav>
 
         <div class="flex gap-2">
@@ -31,5 +34,5 @@ const baseUrl = import.meta.env.BASE_URL;
             </a>
         </div>
     </div>
-    <p class="pb-8 text-center text-xs text-base-content/60">© {today.getFullYear()} Jorge Castaño · Built with Astro</p>
+    <p class="pb-8 text-center text-xs text-base-content/60">© {today.getFullYear()} Jorge Castaño · {s.footer.built}</p>
 </footer>

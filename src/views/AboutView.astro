@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "../config";
+import { t, localePath, type Lang } from "../i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const a = s.about;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={a.pageTitle} description={a.description} sideBarActiveItemID="about" lang={lang}>
+    <div class="mx-auto max-w-5xl px-5 py-16">
+        <section class="grid items-center gap-10 md:grid-cols-[auto_1fr]">
+            <img
+                src={`${baseUrl}profile.webp`}
+                alt={s.home.portraitAlt}
+                width="224"
+                height="224"
+                class="mx-auto h-48 w-48 rounded-full object-cover ring-2 ring-primary/60 ring-offset-8 ring-offset-base-100 md:h-56 md:w-56"
+            />
+            <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{a.kicker}</p>
+                <h1 class="mt-2 text-4xl font-bold md:text-5xl">{a.hi}</h1>
+                <p class="mt-5 text-lg leading-relaxed text-base-content/85">{a.p1}</p>
+                <p class="mt-4 text-lg leading-relaxed text-base-content/85">{a.p2}</p>
+            </div>
+        </section>
+
+        <section class="mt-20" aria-labelledby="focus-title">
+            <h2 id="focus-title" class="text-3xl font-bold">{a.whatIDo}</h2>
+            <div class="mt-8 grid gap-5 md:grid-cols-2">
+                {a.focus.map((f) => (
+                    <div class="rounded-2xl border border-base-300 bg-base-200 p-6">
+                        <h3 class="text-lg font-semibold">{f.title}</h3>
+                        <p class="mt-2 text-base-content/80">{f.text}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section class="mt-20" aria-labelledby="principles-title">
+            <h2 id="principles-title" class="text-3xl font-bold">{a.howIWork}</h2>
+            <ol class="mt-8 grid gap-5 md:grid-cols-2">
+                {a.principles.map((p, i) => (
+                    <li class="flex gap-4 rounded-2xl border border-base-300 bg-base-200 p-6">
+                        <span class="font-display text-2xl font-semibold text-primary">0{i + 1}</span>
+                        <div>
+                            <h3 class="font-semibold">{p.title}</h3>
+                            <p class="mt-1 text-base-content/80">{p.text}</p>
+                        </div>
+                    </li>
+                ))}
+            </ol>
+        </section>
+
+        <section class="mt-20 rounded-3xl border border-primary/40 bg-base-200 p-8 text-center md:p-12">
+            <h2 class="text-3xl font-bold">{a.ctaTitle}</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-base-content/80">{s.common.openTo}</p>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary">{s.common.emailMe}</a>
+                <a href={localePath(lang, "cv")} class="btn btn-outline">{a.viewExperience}</a>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">{s.common.linkedin}</a>
+            </div>
+        </section>
+    </div>
+</BaseLayout>

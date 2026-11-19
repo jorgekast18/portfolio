@@ -1,18 +1,26 @@
 ---
 import { CONTACT_EMAIL, LINKEDIN_URL } from "../config";
-const { active } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
+import { t, localePath, type Lang } from "../i18n";
+
+interface Props {
+  active?: string;
+  lang?: Lang;
+  otherLang?: Lang;
+  otherPath?: string;
+}
+const { active, lang = "en", otherLang = "es", otherPath = "/es/" } = Astro.props;
+const s = t(lang).nav;
 const links = [
-  { id: "home", label: "Home", href: `${baseUrl}` },
-  { id: "projects", label: "Projects", href: `${baseUrl}projects` },
-  { id: "cv", label: "Experience", href: `${baseUrl}cv` },
-  { id: "about", label: "About", href: `${baseUrl}about` },
+  { id: "home", label: s.home, href: localePath(lang, "") },
+  { id: "projects", label: s.projects, href: localePath(lang, "projects") },
+  { id: "cv", label: s.cv, href: localePath(lang, "cv") },
+  { id: "about", label: s.about, href: localePath(lang, "about") },
 ];
 ---
 
 <header class="sticky top-0 z-40 w-full border-b border-base-300/70 bg-base-100/85 backdrop-blur">
   <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5" aria-label="Main">
-    <a href={`${baseUrl}`} class="font-display text-lg font-semibold tracking-tight">
+    <a href={localePath(lang, "")} class="font-display text-lg font-semibold tracking-tight">
       Jorge Castaño<span class="text-primary">.</span>
     </a>
 
@@ -31,13 +39,19 @@ const links = [
           </a>
         </li>
       ))}
+      <li>
+        <a href={otherPath} hreflang={otherLang} lang={otherLang} title={s.switchLabel}
+          class="rounded-lg px-3 py-2 text-sm font-medium text-base-content/75 hover:text-primary">
+          {otherLang.toUpperCase()}
+        </a>
+      </li>
       <li class="ml-2">
-        <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary btn-sm">Contact</a>
+        <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary btn-sm">{s.contact}</a>
       </li>
     </ul>
 
     <details class="dropdown dropdown-end md:hidden">
-      <summary class="btn btn-ghost btn-square" aria-label="Open menu">
+      <summary class="btn btn-ghost btn-square" aria-label={s.menu}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-5 w-5 stroke-current" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
@@ -46,8 +60,9 @@ const links = [
         {links.map((l) => (
           <li><a href={l.href} class:list={[{ "text-primary": active === l.id }]}>{l.label}</a></li>
         ))}
+        <li><a href={otherPath} hreflang={otherLang} lang={otherLang}>{s.switchTo}</a></li>
         <li><a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href={`mailto:${CONTACT_EMAIL}`} class="text-primary">Contact</a></li>
+        <li><a href={`mailto:${CONTACT_EMAIL}`} class="text-primary">{s.contact}</a></li>
       </ul>
     </details>
   </nav>

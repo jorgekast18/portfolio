@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getProjects, type ProjectCategory } from "../data/projects";
+import { CONTACT_EMAIL } from "../config";
+import { t, type Lang } from "../i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const projects = getProjects(lang);
+
+const order: ProjectCategory[] = ["ai", "fintech", "enterprise"];
+const groups = order.map((cat) => ({
+    cat,
+    label: s.projects.categories[cat],
+    items: projects.filter((p) => p.category === cat),
+}));
+---
+
+<BaseLayout title={s.projects.pageTitle} description={s.projects.description} sideBarActiveItemID="projects" lang={lang}>
+    <div class="mx-auto max-w-6xl px-5 py-16">
+        <header class="max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{s.projects.kicker}</p>
+            <h1 class="mt-2 text-4xl font-bold md:text-5xl">{s.projects.title}</h1>
+            <p class="mt-4 text-lg text-base-content/80">{s.projects.intro}</p>
+            <nav class="mt-8 flex flex-wrap gap-2" aria-label={s.projects.kicker}>
+                {groups.map((g) => (
+                    <a href={`#${g.cat}`} class="rounded-full border border-base-300 px-4 py-1.5 text-sm hover:border-primary hover:text-primary">{g.label}</a>
+                ))}
+            </nav>
+        </header>
+
+        {groups.map((g) => (
+            <section id={g.cat} class="mt-16 scroll-mt-24" aria-labelledby={`${g.cat}-title`}>
+                <h2 id={`${g.cat}-title`} class="border-b border-base-300 pb-3 text-2xl font-bold">{g.label}</h2>
+                <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {g.items.map((p) => <ProjectCard project={p} lang={lang} />)}
+                </div>
+            </section>
+        ))}
+
+        <div class="mt-20 rounded-3xl border border-primary/40 bg-base-200 p-8 text-center md:p-12">
+            <h2 class="text-3xl font-bold">{s.projects.ctaTitle}</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-base-content/80">{s.common.openTo}</p>
+            <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary mt-8">{s.common.getInTouch}</a>
+        </div>
+    </div>
+</BaseLayout>
