@@ -1,207 +1,139 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "../config";
+
+const skills = [
+    { group: "AI & LLMs", items: ["AI Agents", "Multi-agent orchestration", "Tool calling", "RAG", "Embeddings / pgvector", "Prompt engineering", "Guardrails & AI policies", "OpenAI API", "Google Gemini", "LangChain", "AWS Bedrock", "n8n"] },
+    { group: "ML & Computer Vision", items: ["Deep learning", "Neural networks", "PyTorch", "OpenCV", "Facial recognition", "Liveness detection", "AWS Rekognition"] },
+    { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "Java", "C#", "Kotlin", "Swift", "Dart"] },
+    { group: "Backend & Frontend", items: ["NestJS", "Node.js", "FastAPI", "Spring Boot", ".NET Core", "React", "Next.js", "React Native", "Flutter", "Angular"] },
+    { group: "Cloud & DevOps", items: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Terraform", "CI/CD", "GitHub Actions", "SonarQube"] },
+    { group: "Architecture & Leadership", items: ["System design", "Hexagonal / Clean architecture", "Microservices", "Technical leadership", "Mentoring", "Agile / Scrum"] },
+];
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
-    <div class="max-w-4xl mx-auto px-4 py-12">
-        <!-- Hero Section -->
-        <div class="mb-16 text-center">
-            <h1 class="text-4xl font-bold mb-4">Jorge Castaño</h1>
-            <p class="text-xl text-primary font-semibold mb-6">
-                Tech Lead | Software Architect | Expert Consultant
+<BaseLayout
+    title="Experience"
+    description="Experience of Jorge Castaño: AI engineering, Tech Lead at Amaris Consulting, Co-Founder & CTO at Monetta, mobile banking for Davivienda, Daviplata and Banco PagaTodo."
+    sideBarActiveItemID="cv"
+>
+    <div class="mx-auto max-w-4xl px-5 py-16">
+        <header>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Experience</p>
+            <h1 class="mt-2 text-4xl font-bold md:text-5xl">10+ years shipping products that scale</h1>
+            <p class="mt-4 text-lg text-base-content/80">
+                Senior Software Engineer and Tech Lead focused on AI engineering, with a background in fintech,
+                mobile banking and enterprise platforms.
             </p>
-            <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                I turn business vision into scalable, high-impact digital products. 
-                With 10+ years of experience, I lead cross-functional engineering teams and design mission-critical architectures across Fintech, Blockchain, and Enterprise domains. If you need a technical leader who guarantees quality, performance, and on-time delivery — you're in the right place.
-            </p>
-        </div>
-
-        <!-- Key Highlights -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center shadow-sm">
-                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-2">10+</div>
-                <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Years of Experience</div>
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a href={`mailto:${CONTACT_EMAIL}?subject=Resume%20request`} class="btn btn-primary btn-sm">Request my resume</a>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">LinkedIn ↗</a>
             </div>
-            <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center shadow-sm">
-                <div class="text-4xl font-extrabold text-green-600 dark:text-green-400 mb-2">10+</div>
-                <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Products Shipped</div>
-            </div>
-            <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-6 text-center shadow-sm">
-                <div class="text-4xl font-extrabold text-purple-600 dark:text-purple-400 mb-2">20+</div>
-                <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Teams Impacted</div>
-            </div>
-        </div>
+        </header>
 
-        <!-- Professional Experience -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b-2 border-primary/20 pb-2">
-                Professional Experience
-            </h2>
+        <section class="mt-14" aria-labelledby="exp-title">
+            <h2 id="exp-title" class="mb-8 border-b border-base-300 pb-3 text-2xl font-bold">Professional experience</h2>
 
-            <div class="space-y-8">
-                <TimeLineElement
-                        title="Expert Consultant & Tech Lead"
-                        company="Amaris Consulting"
-                        date="Sept 2024 – Present">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><strong>Summa (Grupo Argos):</strong> Led the full revitalization of the Becarios de Fundación Argos platform, delivering innovative features that accelerated critical selection processes.</li>
-                        <li><strong>Femsa Salud:</strong> Successfully deployed React Native applications for Yza and Cruz Verde pharmacies, boosting performance by 30% and shipping 5+ core business features.</li>
-                        <li><strong>Cencosud:</strong> Administered SonarQube at enterprise scale, analyzing 3,400+ projects, advising 20+ teams, and elevating code quality across 10+ core products.</li>
-                        <li>Championed DevSecOps best practices, dramatically raising code quality standards across the organization.</li>
-                    </ul>
-                </TimeLineElement>
+            <TimeLineElement title="Founder & AI Engineer" company="Veqya" date="Jan 2026 – Present"
+                tags={["Python", "LLMs", "AI Agents", "NestJS", "Next.js", "n8n", "PostgreSQL"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li>Building an AI agent platform that runs appointments, schedules and sales for small businesses (clinics, salons, sports venues).</li>
+                    <li>Designed the multi-agent orchestration: agent harness, tool calling, AI usage policies, guardrails and customer segmentation.</li>
+                </ul>
+            </TimeLineElement>
 
-                <TimeLineElement
-                        title="CTO & Technology Consultant"
-                        company="Startup Ecosystem & Enterprise Clients"
-                        date="2020 – Present">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Architected and deployed 5+ production-grade digital products serving 100K+ users.</li>
-                        <li>Led technical strategy and team management for early-stage startups.</li>
-                        <li>Implemented CI/CD pipelines, microservices architecture, and cloud infrastructure (AWS, GCP).</li>
-                        <li>Mentored engineering teams on best practices, design patterns, and code quality standards.</li>
-                    </ul>
-                </TimeLineElement>
+            <TimeLineElement title="Tech Lead & Senior Software Engineer" company="Amaris Consulting" date="Sep 2024 – Present"
+                tags={["TypeScript", "React Native", "NestJS", "LLMs", "GitHub Actions", "SonarQube"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li><strong class="text-base-content">Femsa Salud, Cruz Verde Chile (Apr 2026 – Present):</strong> built an LLM shopping assistant with tool calling (tested, pending launch), a NestJS Backend for Frontend and SonarQube quality gates in CI/CD.</li>
+                    <li><strong class="text-base-content">Cencosud (May 2025 – Feb 2026):</strong> ran the organization-wide SonarQube platform, onboarding 3,500+ repositories and advising 20+ teams.</li>
+                    <li><strong class="text-base-content">Femsa Salud, Yza Mexico (Dec 2024 – May 2025):</strong> improved app performance by 30% and shipped 5+ core features for 100K+ users.</li>
+                    <li><strong class="text-base-content">Summa, Grupo Argos (Sep – Dec 2024):</strong> led 4 engineers and cut response times by about 45%.</li>
+                </ul>
+            </TimeLineElement>
 
-                <TimeLineElement
-                        title="Co-founder & CTO"
-                        company="Monetta Project"
-                        date="2021 – 2023">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Built a blockchain-powered digital wallet with a native token on the Polygon network.</li>
-                        <li>Managed a team of 10 engineers across mobile (iOS/Android), backend, and web platforms.</li>
-                        <li>Designed a system architecture handling 50K+ daily transactions with 99.9% uptime.</li>
-                        <li>Stack: TypeScript, NestJS, React, React Native, Redux, PostgreSQL, Polygon, TailwindCSS.</li>
-                    </ul>
-                </TimeLineElement>
+            <TimeLineElement title="React Native Lead" company="Banco PagaTodo (Mexico, remote)" date="Feb 2023 – Feb 2024"
+                tags={["React Native", "Redux", "Spring Boot", "Azure DevOps"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li>Led a team of 4 engineers in Colombia on the ObtenMas and PagaTodo mobile banking apps.</li>
+                    <li>Upgraded React Native and applied Clean Architecture: 45% smaller app, 75% better performance test results.</li>
+                </ul>
+            </TimeLineElement>
 
-                <TimeLineElement
-                        title="Full-Stack Developer & Tech Lead"
-                        company="Banking & Fintech Sector"
-                        date="2016 – 2020">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><strong>PagaTodo App:</strong> Built the flagship mobile banking platform enabling payments, transfers, and virtual card management (React Native, Redux).</li>
-                        <li><strong>CMS Davivienda:</strong> Developed a geolocation management system for 500+ bank branches and 2,000+ ATMs (Node.js, AngularJS, PostgreSQL).</li>
-                        <li><strong>Daviplata & Davivienda Maps:</strong> Created customer-facing geolocation tools mapping 15,000+ service points for Colombia's largest bank.</li>
-                    </ul>
-                </TimeLineElement>
+            <TimeLineElement title="Lecturer, Systems Engineering (part-time)" company="Corporación Universitaria Autónoma de Nariño" date="Feb 2022 – May 2023">
+                <p>Taught Data Structures, Programming Fundamentals, Databases, Software Engineering I &amp; II and Programming Languages.</p>
+            </TimeLineElement>
 
-                <TimeLineElement
-                        title="Project Manager & Lead Developer"
-                        company="OWO App"
-                        date="2015 – 2016">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Led end-to-end development of a commission-based payment platform (mobile + CMS).</li>
-                        <li>Defined architecture, code standards, and deployment strategies.</li>
-                        <li>Delivered the project 2 weeks ahead of schedule with zero critical bugs post-launch.</li>
-                    </ul>
-                </TimeLineElement>
+            <TimeLineElement title="Co-Founder & CTO" company="Monetta" date="Jun 2021 – Feb 2023"
+                tags={["TypeScript", "NestJS", "React Native", "Next.js", "FastAPI", "AWS", "Polygon"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li>Built the engineering department from scratch: 6 developers, 2 QA engineers and 2 DevOps engineers.</li>
+                    <li>Delivered 2 mobile apps and 1 CMS; closed 6 strategic partnerships that added 3 product modules for 1,000+ users.</li>
+                    <li>Wrote 20+ engineering policies and introduced Agile practices: +45% throughput, −25% defects.</li>
+                </ul>
+            </TimeLineElement>
 
-                <TimeLineElement
-                        title="Mobile SDK Developer"
-                        company="Multiple Clients"
-                        date="2013 – 2015">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Developed a multiplatform SDK (Android, iOS, Cordova) for digital onboarding.</li>
-                        <li>Integrated OCR and facial recognition services for identity verification.</li>
-                        <li>SDK adopted by 3+ financial institutions across Latin America.</li>
-                    </ul>
-                </TimeLineElement>
-            </div>
+            <TimeLineElement title="Technical Lead (freelance)" company="Cetoco — clients Davivienda, Daviplata, OWO" date="2019 – 2024"
+                tags={["JavaScript", "Node.js", "AngularJS", "Python", "FastAPI", "Flutter", "Google Maps API"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li>Built Daviplata's official geolocation map in 8 months, then owned support and features: 15K+ points, 40% faster load, 1M+ monthly users.</li>
+                    <li>Built Davivienda's branch and ATM locator (2,500+ points, 99.9% uptime) and a geolocation CMS serving 2M+ queries per month.</li>
+                    <li>OWO (Oct 2021 – Oct 2022): led 3 developers; integrated 2 payment gateways and 5 providers.</li>
+                </ul>
+            </TimeLineElement>
+
+            <TimeLineElement title="Mobile Technical Lead" company="reconoSER ID" date="Oct 2019 – Nov 2021"
+                tags={["Kotlin", "Swift", "C# / .NET Core", "Flutter", "Biometrics"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li>Led 5 developers and 2 QA engineers building the mobile identity-verification SDK sold to enterprise clients.</li>
+                    <li>Anti-spoofing (liveness detection) project that helped clients cut e-commerce fraud by up to 85%.</li>
+                </ul>
+            </TimeLineElement>
+
+            <TimeLineElement title="Lead Backend Engineer" company="SuRed" date="Feb 2019 – Oct 2019"
+                tags={["Java", "Spring Boot", "Node.js", "AWS", "PostgreSQL"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li>Led a new payment gateway for 10,000+ customers, cutting processing time by 40%.</li>
+                    <li>Introduced hexagonal architecture and clean code, reducing duplicate code by 25%.</li>
+                </ul>
+            </TimeLineElement>
+
+            <TimeLineElement title="Frontend Lead" company="Adatec" date="Nov 2016 – Feb 2019"
+                tags={["JavaScript", "Angular", "Sencha Touch", "Django", ".NET Core"]}>
+                <ul class="list-disc space-y-1 pl-5">
+                    <li>Migrated desktop sales software to a web platform, increasing customer access by 85%.</li>
+                    <li>Delivered 5 modules for the R-Sales field-sales app used by 200+ field workers.</li>
+                </ul>
+            </TimeLineElement>
         </section>
 
-        <!-- Education -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b-2 border-primary/20 pb-2">
-                Education
-            </h2>
-
-            <div class="space-y-6">
-                <TimeLineElement
-                        title="Master's in Computer Engineering"
-                        company="Universidad de Granada"
-                        date="Sep 2025 – Present">
-                    Currently pursuing advanced studies in distributed systems and software architecture.
-                </TimeLineElement>
-
-                <TimeLineElement
-                        title="Bachelor's in Systems Engineering"
-                        company="Universidad del Valle"
-                        date="Completed">
-                    Solid foundation in software development, algorithms, and system design.
-                </TimeLineElement>
-            </div>
+        <section class="mt-16" aria-labelledby="edu-title">
+            <h2 id="edu-title" class="mb-8 border-b border-base-300 pb-3 text-2xl font-bold">Education</h2>
+            <TimeLineElement title="M.Sc. in Computer Engineering" company="Universidad de Granada, Spain" date="Sep 2025 – Present">
+                <p>Deep learning and machine learning projects, distributed systems and software architecture.</p>
+            </TimeLineElement>
+            <TimeLineElement title="B.Sc. in Systems Engineering" company="Universidad del Valle, Colombia" date="2011 – 2017">
+                <p>Software development, algorithms and system design.</p>
+            </TimeLineElement>
+            <TimeLineElement title="Certificate in Information Security" company="Universidad ICESI, Colombia" date="2018" />
         </section>
 
-        <!-- Technical Skills -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b-2 border-primary/20 pb-2">
-                Technical Expertise
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Languages & Frameworks</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
-                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
-                        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
-                        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 px-3 py-1 rounded-full text-sm font-medium">NestJS</span>
-                        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm font-medium">React</span>
-                        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm font-medium">React Native</span>
-                        <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 px-3 py-1 rounded-full text-sm font-medium">Redux</span>
-                        <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 px-3 py-1 rounded-full text-sm font-medium">Spring Boot</span>
+        <section class="mt-16" aria-labelledby="skills-title">
+            <h2 id="skills-title" class="mb-8 border-b border-base-300 pb-3 text-2xl font-bold">Skills</h2>
+            <div class="grid gap-8 md:grid-cols-2">
+                {skills.map((s) => (
+                    <div>
+                        <h3 class="mb-3 text-base font-semibold">{s.group}</h3>
+                        <ul class="flex flex-wrap gap-2">
+                            {s.items.map((i) => (
+                                <li class="rounded-full border border-base-300 px-3 py-1 text-sm text-base-content/85">{i}</li>
+                            ))}
+                        </ul>
                     </div>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Infrastructure & Tools</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-100 px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
-                        <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-100 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
-                        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100 px-3 py-1 rounded-full text-sm font-medium">Docker</span>
-                        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100 px-3 py-1 rounded-full text-sm font-medium">AWS</span>
-                        <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-100 px-3 py-1 rounded-full text-sm font-medium">CI/CD</span>
-                        <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-100 px-3 py-1 rounded-full text-sm font-medium">Microservices</span>
-                        <span class="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
-                        <span class="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm font-medium">SonarQube</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Leadership & Architecture</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Team Leadership</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">System Design</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Code Review</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Agile/Scrum</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Domains</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Fintech</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">E-commerce</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Mobile Banking</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Healthcare</span>
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-medium">Retail</span>
-                    </div>
-                </div>
+                ))}
             </div>
-
-            <!-- CTA -->
-            <div class="text-center mt-12 p-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl border border-primary/20 shadow-md hover:shadow-lg transition-all duration-300">
-                <h3 class="text-2xl font-bold mb-4 text-base-content">Ready to take your product to the next level?</h3>
-                <p class="mb-6 text-base-content/80 max-w-2xl mx-auto text-lg">
-                    My approach isn't just writing code — it's building robust solutions that solve real business problems, scale over time, and exceed your users' expectations.
-                </p>
-                <a href="mailto:jorgecastano.dev@gmail.com" class="btn btn-primary btn-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
-                    Let's Talk About Your Project
-                </a>
-            </div>
+            <p class="mt-8 text-sm text-base-content/70">Languages: Spanish (native) · English (intermediate, B1)</p>
         </section>
     </div>
 </BaseLayout>

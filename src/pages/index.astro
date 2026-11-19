@@ -1,208 +1,139 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "../config";
 const baseUrl = import.meta.env.BASE_URL;
+
+const aiProjects = projects.filter((p) => p.category === "ai");
+const highlights = ["monetta", "daviplata", "reconoser", "femsa"]
+    .map((id) => projects.find((p) => p.id === id))
+    .filter(Boolean);
+
+const stats = [
+    { value: "10+", label: "years building products" },
+    { value: "1M+", label: "monthly users on apps I built" },
+    { value: "85%", label: "less fraud with biometrics" },
+    { value: "10", label: "engineers led as CTO" },
+];
+
+const pipeline = ["User", "Agent", "Tools", "RAG", "Answer"];
+
+const logos = [
+    { src: "davivienda.png", alt: "Davivienda" },
+    { src: "daviplata.svg", alt: "Daviplata" },
+    { src: "femsa.png", alt: "Femsa Salud" },
+    { src: "cenco.png", alt: "Cencosud" },
+    { src: "amaris.png", alt: "Amaris Consulting" },
+    { src: "pagatodo.png", alt: "Banco PagaTodo" },
+    { src: "summa.jpg", alt: "Summa – Grupo Argos" },
+    { src: "monetta.png", alt: "Monetta" },
+];
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-    <div class="pb-12 mt-5">
-        <!-- Hero igual... -->
+    <!-- Hero -->
+    <section class="mx-auto max-w-6xl px-5 pb-16 pt-16 md:pt-24">
+        <div class="grid items-center gap-12 md:grid-cols-[1fr_auto]">
+            <div>
+                <ul class="mb-8 flex flex-wrap items-center gap-2 text-xs font-medium" aria-label="Agent pipeline">
+                    {pipeline.map((step, i) => (
+                        <li class="flex items-center gap-2">
+                            <span class:list={[
+                                "rounded-full border px-3 py-1",
+                                step === "Agent" ? "border-primary bg-primary text-primary-content" : "border-base-300 text-base-content/70",
+                            ]}>{step}</span>
+                            {i < pipeline.length - 1 && <span class="text-base-content/40" aria-hidden="true">→</span>}
+                        </li>
+                    ))}
+                </ul>
 
-        <!-- Featured Work Section - RESPONSIVE Y CON IMÁGENES CONTROLADAS -->
-        <section class="mb-16 px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold text-base-content mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Featured Projects</h2>
-                <p class="text-lg text-base-content/80 max-w-3xl mx-auto font-medium">
-                    A curated selection of high-impact digital products I've architected, led, and shipped — 
-                    from <strong class="text-primary">blockchain wallets</strong> to enterprise <strong class="text-primary">Fintech ecosystems</strong> serving thousands of users daily.
+                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">Jorge Castaño</p>
+                <h1 class="text-4xl font-bold leading-[1.08] md:text-6xl">
+                    AI Engineer &amp;<br />Senior Software Engineer
+                </h1>
+                <p class="mt-6 max-w-2xl text-lg leading-relaxed text-base-content/80">
+                    I build LLM agents, RAG pipelines and the production software around them — on top of 10+ years
+                    shipping fintech, mobile banking and enterprise products used by more than a million people in Latin America.
                 </p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href={`${baseUrl}projects`} class="btn btn-primary">See my work</a>
+                    <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-outline">Get in touch</a>
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn ↗</a>
+                </div>
+                <p class="mt-6 text-sm text-base-content/60">Cali, Colombia · Open to remote roles and relocation</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <img
+                src={`${baseUrl}profile.webp`}
+                alt="Portrait of Jorge Castaño"
+                width="288"
+                height="288"
+                class="mx-auto h-56 w-56 rounded-full object-cover ring-2 ring-primary/60 ring-offset-8 ring-offset-base-100 md:h-72 md:w-72"
+            />
+        </div>
 
-                <!-- Project 1: Monetta -->
-                <a href={`${baseUrl}projects#monetta`} class="group block">
-                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-base-300 overflow-hidden h-full">
+        <ul class="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {stats.map((s) => (
+                <li class="rounded-2xl border border-base-300 bg-base-200 p-5">
+                    <p class="font-display text-3xl font-semibold text-primary">{s.value}</p>
+                    <p class="mt-1 text-sm text-base-content/70">{s.label}</p>
+                </li>
+            ))}
+        </ul>
+    </section>
 
-                        <!-- Imagen con tamaño FIJO y aspect ratio controlado -->
-                        <figure class="relative w-full h-64 bg-gradient-to-br from-purple-900/20 to-blue-900/20 overflow-hidden">
-                            <img
-                                    src={`${baseUrl}monetta.png`}
-                                    alt="Monetta Digital Wallet"
-                                    class="absolute inset-0 w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <!-- Overlay para mejor legibilidad de badges -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-base-300/50 to-transparent"></div>
+    <!-- AI Engineering -->
+    <section class="mx-auto max-w-6xl px-5 py-16" aria-labelledby="ai-title">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Now</p>
+        <h2 id="ai-title" class="mt-2 text-3xl font-bold md:text-4xl">AI engineering in production</h2>
+        <p class="mt-4 max-w-3xl text-base-content/80">
+            Multi-agent orchestration, tool calling, RAG and guardrails — built with the same engineering discipline
+            I applied for a decade in regulated, high-traffic fintech systems.
+        </p>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+            {aiProjects.map((p) => <ProjectCard project={p} />)}
+        </div>
+    </section>
 
-                            <!-- Badges posicionados absolutamente -->
-                            <div class="absolute top-4 left-4 flex gap-2 flex-wrap">
-                                <span class="badge badge-primary badge-lg">FEATURED</span>
-                            </div>
-                        </figure>
+    <!-- Track record -->
+    <section class="mx-auto max-w-6xl px-5 py-16" aria-labelledby="track-title">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Track record</p>
+        <h2 id="track-title" class="mt-2 text-3xl font-bold md:text-4xl">Fintech, mobile and enterprise at scale</h2>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+            {highlights.map((p) => <ProjectCard project={p!} />)}
+        </div>
+        <div class="mt-10 flex flex-wrap gap-3">
+            <a href={`${baseUrl}projects`} class="btn btn-primary">All projects</a>
+            <a href={`${baseUrl}cv`} class="btn btn-outline">Full experience</a>
+        </div>
+    </section>
 
-                        <div class="card-body">
-                            <div class="flex items-center gap-2 mb-2 flex-wrap">
-                                <span class="badge badge-secondary">BLOCKCHAIN</span>
-                                <span class="badge badge-primary">CTO</span>
-                            </div>
+    <!-- Logos -->
+    <section class="mx-auto max-w-6xl px-5 py-12" aria-labelledby="logos-title">
+        <h2 id="logos-title" class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">
+            Companies I have built for
+        </h2>
+        <ul class="mt-8 grid grid-cols-2 items-center gap-4 sm:grid-cols-4">
+            {logos.map((l) => (
+                <li class="flex h-20 items-center justify-center rounded-xl bg-white/95 p-4">
+                    <img src={`${baseUrl}${l.src}`} alt={l.alt} loading="lazy" class="max-h-10 w-auto object-contain" />
+                </li>
+            ))}
+        </ul>
+    </section>
 
-                            <h3 class="card-title text-xl lg:text-2xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                Monetta Project
-                            </h3>
-
-                            <p class="text-base-content/70 leading-relaxed text-sm lg:text-base">
-                                Digital wallet with blockchain integration on Polygon. Led team of 10 engineers
-                                handling <strong class="text-base-content">50K+ daily transactions</strong> with 99.9% uptime.
-                            </p>
-
-                            <!-- Metrics Grid -->
-                            <div class="grid grid-cols-3 gap-2 my-4 p-3 lg:p-4 bg-base-200 rounded-lg">
-                                <div class="text-center">
-                                    <div class="text-xl lg:text-2xl font-bold text-primary">10</div>
-                                    <div class="text-xs text-base-content/60">Engineers</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-xl lg:text-2xl font-bold text-secondary">50K+</div>
-                                    <div class="text-xs text-base-content/60">Daily Txns</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-xl lg:text-2xl font-bold text-success">99.9%</div>
-                                    <div class="text-xs text-base-content/60">Uptime</div>
-                                </div>
-                            </div>
-
-                            <!-- Tech Stack -->
-                            <div class="flex flex-wrap gap-2">
-                                <div class="badge badge-outline badge-sm lg:badge-md">TypeScript</div>
-                                <div class="badge badge-outline badge-sm lg:badge-md">NestJS</div>
-                                <div class="badge badge-outline badge-sm lg:badge-md">React Native</div>
-                                <div class="badge badge-outline badge-sm lg:badge-md">Polygon</div>
-                            </div>
-
-                            <!-- CTA -->
-                            <div class="mt-4 flex items-center gap-2 text-primary dark:text-primary font-bold text-sm lg:text-base group-hover:text-secondary transition-colors">
-                                View case study
-                                <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 2: Banking Apps -->
-                <a href={`${baseUrl}projects#banking`} class="group block">
-                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-base-300 overflow-hidden h-full">
-
-                        <!-- Imagen con tamaño FIJO -->
-                        <figure class="relative w-full h-64 bg-gradient-to-br from-green-900/20 to-teal-900/20 overflow-hidden">
-                            <img
-                                    src={`${baseUrl}pagatodo.png`}
-                                    alt="Banking Applications"
-                                    class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div class="absolute inset-0 bg-gradient-to-t from-base-300/50 to-transparent"></div>
-
-                            <div class="absolute top-4 left-4">
-                                <span class="badge badge-success badge-lg">FINTECH</span>
-                            </div>
-                        </figure>
-
-                        <div class="card-body">
-                            <h3 class="card-title text-xl lg:text-2xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                Banking Solutions Suite
-                            </h3>
-
-                            <p class="text-base-content/70 leading-relaxed text-sm lg:text-base mb-4">
-                                Built mobile banking platforms and geolocation systems for Colombia's largest financial institutions,
-                                impacting <strong class="text-base-content">500K+ users</strong>.
-                            </p>
-
-                            <!-- Lista compacta de proyectos -->
-                            <ul class="space-y-2">
-                                <li class="flex items-start gap-2">
-                                    <svg class="w-4 h-4 lg:w-5 lg:h-5 text-success flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span class="text-xs lg:text-sm text-base-content/80"><strong>PagaTodo:</strong> Digital banking</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <svg class="w-4 h-4 lg:w-5 lg:h-5 text-success flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span class="text-xs lg:text-sm text-base-content/80"><strong>Davivienda:</strong> 500+ branches</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <svg class="w-4 h-4 lg:w-5 lg:h-5 text-success flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span class="text-xs lg:text-sm text-base-content/80"><strong>Daviplata:</strong> Location services</span>
-                                </li>
-                            </ul>
-
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <div class="badge badge-outline badge-sm lg:badge-md">React Native</div>
-                                <div class="badge badge-outline badge-sm lg:badge-md">Node.js</div>
-                                <div class="badge badge-outline badge-sm lg:badge-md">PostgreSQL</div>
-                            </div>
-
-                            <div class="mt-4 flex items-center gap-2 text-primary dark:text-primary font-bold text-sm lg:text-base group-hover:text-secondary transition-colors">
-                                Explore the ecosystem
-                                <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
+    <!-- CTA -->
+    <section class="mx-auto max-w-6xl px-5 py-16">
+        <div class="rounded-3xl border border-primary/40 bg-base-200 p-8 text-center md:p-14">
+            <h2 class="text-3xl font-bold md:text-4xl">Building something with AI?</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-base-content/80">
+                I'm open to AI Engineer, Senior Software Engineer and Tech Lead roles — remote or with relocation.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary">Email me</a>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline">Connect on LinkedIn</a>
             </div>
-
-            <!-- CTA Ver todos -->
-            <div class="text-center mt-12">
-                <a href={`${baseUrl}cv`} class="btn btn-primary btn-md lg:btn-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                    View My Full Experience
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </a>
-            </div>
-        </section>
-
-        <!-- Logo Strip - RESPONSIVE -->
-        <section class="mb-16 px-4 py-8 bg-base-200/50 rounded-2xl border border-base-300">
-            <div class="text-center mb-8">
-                <p class="text-sm font-bold text-base-content/80 uppercase tracking-widest">
-                    Trusted by industry leaders
-                </p>
-            </div>
-            <!-- Responsive logo grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 max-w-5xl mx-auto items-center justify-items-center">
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}davivienda.png`} alt="Davivienda" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}daviplata.svg`} alt="Daviplata" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}cenco.png`} alt="Cencosud" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}amaris.png`} alt="Amaris Consulting" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}femsa.png`} alt="Femsa Salud" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}monetta.png`} alt="Monetta" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}pagatodo.png`} alt="PagaTodo" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-                <div class="flex items-center justify-center h-12 w-full">
-                    <img src={`${baseUrl}summa.jpg`} alt="Summa - Grupo Argos" class="max-h-8 w-auto grayscale hover:grayscale-0 transition-all object-contain" />
-                </div>
-            </div>
-        </section>
-
-    </div>
+        </div>
+    </section>
 </BaseLayout>

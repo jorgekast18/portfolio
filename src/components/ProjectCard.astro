@@ -1,0 +1,64 @@
+---
+import type { Project } from "../data/projects";
+interface Props {
+    project: Project;
+}
+const { project } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<article id={project.id} class="group flex h-full scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-base-300 bg-base-200 transition-colors hover:border-primary/50">
+    {project.image && (
+        <figure class="relative h-48 w-full overflow-hidden bg-white/95">
+            <img
+                src={`${baseUrl}${project.image}`}
+                alt={`${project.title} logo`}
+                loading="lazy"
+                class={`absolute inset-0 h-full w-full p-6 ${project.imageClass ?? "object-contain"} object-center transition-transform duration-500 group-hover:scale-105`}
+            />
+        </figure>
+    )}
+
+    <div class="flex flex-1 flex-col p-6">
+        {project.period && (
+            <p class="mb-2 text-xs font-medium uppercase tracking-wider text-base-content/60">{project.period}</p>
+        )}
+        <h3 class="text-xl font-semibold text-base-content">{project.title}</h3>
+        {project.role && <p class="mt-1 text-sm font-medium text-primary">{project.role}</p>}
+
+        <p class="mt-4 text-sm leading-relaxed text-base-content/80">{project.description}</p>
+
+        {project.metrics && (
+            <dl class="mt-5 grid grid-cols-3 gap-2 rounded-xl border border-base-300 bg-base-100 p-3">
+                {project.metrics.map((m) => (
+                    <div class="text-center">
+                        <dt class="sr-only">{m.label}</dt>
+                        <dd class="font-display text-lg font-semibold text-primary">{m.value}</dd>
+                        <dd class="text-[11px] leading-tight text-base-content/70">{m.label}</dd>
+                    </div>
+                ))}
+            </dl>
+        )}
+
+        <ul class="mt-5 flex flex-wrap gap-2" aria-label="Tech stack">
+            {project.tech.map((t) => (
+                <li class="rounded-full border border-base-300 px-2.5 py-0.5 text-xs text-base-content/80">{t}</li>
+            ))}
+        </ul>
+
+        {(project.demo || project.github) && (
+            <div class="mt-auto flex gap-5 pt-5 text-sm font-medium">
+                {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                        Live demo ↗
+                    </a>
+                )}
+                {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-base-content/80 hover:text-base-content hover:underline">
+                        Source code ↗
+                    </a>
+                )}
+            </div>
+        )}
+    </div>
+</article>
